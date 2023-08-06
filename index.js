@@ -2,18 +2,23 @@ const express = require("express");
 
 const app = express();
 
+const env = require("./source/config/env");
+
+const { username, password, database, host } = env;
+
 const port = process.env.PORT || 3000;
 
-console.log(port);
+console.log(`port: ${process.env.PORT}`);
+console.log(`username: ${username} password: ${password} database: ${database} host: ${host}`);
 
 const courses = [
   { id: 1, name: "course1" },
   { id: 2, name: "course2" },
-  { id: 3, name: "course3" }, // added  this line
-  { id: 4, name: "course4" }, // added  this line
-  { id: 5, name: "course5" }, // added  this line
-  { id: 6, name: "course6" }, // added  this line
-  { id: 7, name: "course7" }, // added  this line
+  { id: 3, name: "course3" }, 
+  { id: 4, name: "course4" }, 
+  { id: 5, name: "course5" }, 
+  { id: 6, name: "course6" }, 
+  { id: 7, name: "course7" }, 
 ];
 
 app.get("/", (req, res) => {
