@@ -6,11 +6,11 @@ const client = require("./source/config/databaseConfig");
 
 const env = require("./source/config/env");
 
-const clint = require("./source/models/user");
+const clint = require("./source/models/models");
 
 const User = clint(client);
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const { username, password, database, host } = env;
@@ -19,17 +19,21 @@ const port = process.env.PORT || 3000;
 
 // create a for loop that creates 10 users
 console.log(User);
-// for (let i = 0; i < 10; i++) {
-//   User.create({
-//     firstname: `John${i}`,
-//     lastname: "Doe",
-//     username: `johndoe${i}`,
-//     password: "password",
-//     email: "example.com",
-//     createdAt: new Date(),
-//     privilage: "admin",
-//   });
-// }
+for (let i = 0; i < 10; i++) {
+  User.create({
+    firstname: `John${i}`,
+    lastname: "Doe",
+    username: `johndoe${i}`,
+    password: "password",
+    email: "example.com",
+    createdAt: new Date(),
+    privilage: "admin",
+  });
+}
+
+const users = await User.findAll();
+
+console.log(users);
 
 const courses = [
   { id: 1, name: "course1" },
