@@ -22,5 +22,8 @@
     "mysql2": "^2.3.3",
     "pg": "^8.11.2",
     "sequelize": "^6.32.0"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.4.3"
   }
 }
