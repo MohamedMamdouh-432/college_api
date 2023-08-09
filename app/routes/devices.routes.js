@@ -18,8 +18,8 @@ module.exports = (app) => {
   // Delete a Device with DeviceID
   router.delete("/:DeviceID", Devices.delete);
 
-  // Delete all Devices
-  router.delete("/", Devices.deleteAll);
+  // // Delete all Devices
+  // router.delete("/", Devices.deleteAll);
 
   app.use("/api/devices", router);
 };

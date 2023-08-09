@@ -18,8 +18,8 @@ module.exports = (app) => {
   // Delete a lectureHall with id
   router.delete("/:id", lectureHalls.delete);
 
-  // Delete all lectureHalls
-  router.delete("/", lectureHalls.deleteAll);
+  // // Delete all lectureHalls
+  // router.delete("/", lectureHalls.deleteAll);
 
   app.use("/api/lectureHalls", router);
 };

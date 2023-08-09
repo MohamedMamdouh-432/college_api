@@ -18,8 +18,8 @@ module.exports = (app) => {
   // Delete a Lab with id
   router.delete("/:id", Timetables.delete);
 
-  // Delete all Timetables
-  router.delete("/", Timetables.deleteAll);
+  // // Delete all Timetables
+  // router.delete("/", Timetables.deleteAll);
 
   app.use("/api/timetables", router);
 };

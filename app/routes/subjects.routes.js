@@ -18,8 +18,8 @@ module.exports = (app) => {
   // Delete a Lab with id
   router.delete("/:id", Subjects.delete);
 
-  // Delete all Subjects
-  router.delete("/", Subjects.deleteAll);
+  // // Delete all Subjects
+  // router.delete("/", Subjects.deleteAll);
 
   app.use("/api/subjects", router);
 };

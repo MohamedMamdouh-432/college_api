@@ -9,7 +9,6 @@ module.exports = (app) => {
   // Retrieve all Labs
   router.get("/", Labs.findAll);
 
-
   // Retrieve a single Lab with id
   router.get("/:id", Labs.findOne);
 
@@ -19,8 +18,8 @@ module.exports = (app) => {
   // Delete a Lab with id
   router.delete("/:id", Labs.delete);
 
-  // Delete all Labs
-  router.delete("/", Labs.deleteAll);
+  // // Delete all Labs
+  // router.delete("/", Labs.deleteAll);
 
   app.use("/api/labs", router);
 };

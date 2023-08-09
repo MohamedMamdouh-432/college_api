@@ -18,8 +18,8 @@ module.exports = (app) => {
   // Delete a Lab with id
   router.delete("/:id", Groups.delete);
 
-  // Delete all Groups
-  router.delete("/", Groups.deleteAll);
+  // // Delete all Groups
+  // router.delete("/", Groups.deleteAll);
 
   app.use("/api/groups", router);
 };
