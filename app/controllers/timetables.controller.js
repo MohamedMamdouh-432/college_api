@@ -38,7 +38,7 @@ exports.create = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: err || "Some error occurred while creating the User.",
+        message: err || "Some error occurred while creating the Timetable.",
       });
     });
 };
@@ -51,11 +51,13 @@ exports.findAll = (req, res) => {
 
   // Timetables.findAll({ where: condition })
   Timetables.findAll({
-    where: GroupID? {
-      GroupID: {
-        [Op.eq]: GroupID,
-      },
-    }: null,
+    where: GroupID
+      ? {
+          GroupID: {
+            [Op.eq]: GroupID,
+          },
+        }
+      : null,
   })
     .then((data) => {
       res.send(data);
@@ -99,7 +101,7 @@ exports.update = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "User was updated successfully.",
+          message: "Timetable was updated successfully.",
         });
       } else {
         res.send({
@@ -124,17 +126,17 @@ exports.delete = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "User was deleted successfully!",
+          message: "Timetable slot was deleted successfully!",
         });
       } else {
         res.send({
-          message: `Cannot delete User with id=${TimetableID}. User was not found!`,
+          message: `Cannot delete Timetable with id=${TimetableID}. timetable was not found!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Could not delete User with id=" + TimetableID,
+        message: "Could not delete timetable with id=" + TimetableID,
       });
     });
 };

@@ -9,14 +9,14 @@ module.exports = (app) => {
   // Retrieve all Groups
   router.get("/", Groups.findAll);
 
-  // Retrieve a single Lab with id
-  router.get("/:id", Groups.findOne);
+  // Retrieve a single Lab with GroupID
+  router.get("/:GroupID", Groups.findOne);
 
-  // Update a Lab with id
-  router.put("/:id", Groups.update);
+  // Update a Lab with GroupID
+  router.put("/:GroupID", Groups.update);
 
-  // Delete a Lab with id
-  router.delete("/:id", Groups.delete);
+  // Delete a Lab with GroupID
+  router.delete("/:GroupID", Groups.delete);
 
   // // Delete all Groups
   // router.delete("/", Groups.deleteAll);

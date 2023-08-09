@@ -10,13 +10,13 @@ module.exports = (app) => {
   router.get("/", Timetables.findAll);
 
   // Retrieve a single Lab with id
-  router.get("/:id", Timetables.findOne);
+  router.get("/:TimetableID", Timetables.findOne);
 
   // Update a Lab with id
-  router.put("/:id", Timetables.update);
+  router.put("/:TimetableID", Timetables.update);
 
   // Delete a Lab with id
-  router.delete("/:id", Timetables.delete);
+  router.delete("/:TimetableID", Timetables.delete);
 
   // // Delete all Timetables
   // router.delete("/", Timetables.deleteAll);
