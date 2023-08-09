@@ -29,5 +29,11 @@ db.Labs.hasMany(db.Devices, { foreignKey: "LabID" });
 db.Professors = require("./professors.model.js")(sequelize, Sequelize);
 db.Subjects = require("./subjects.model.js")(sequelize, Sequelize);
 db.Groups = require("./groups.model.js")(sequelize, Sequelize);
-
+db.Timetables = require("./timetables.model.js")(sequelize, Sequelize);
+db.Timetables.belongsTo(db.Groups, { foreignKey: 'GroupID' });
+db.Timetables.belongsTo(db.Subjects, { foreignKey: 'SubjectID' });
+db.Timetables.belongsTo(db.Professors, { foreignKey: 'ProfessorID' });
+db.Timetables.belongsTo(db.LectureHalls, { foreignKey: 'LectureHallID' });
+db.Timetables.belongsTo(db.Labs, { foreignKey: 'LabID' });
+db.Groups.hasMany(db.Timetables, { foreignKey: 'GroupID' });
 module.exports = db;
