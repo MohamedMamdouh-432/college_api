@@ -3,11 +3,11 @@ const cors = require("cors");
 
 const app = express();
 
-// var corsOptions = {
-//   origin: "http://localhost:8081",
-// };
+var corsOptions = {
+  origin: "http://localhost:3000",
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -41,6 +41,8 @@ require("./app/routes/lectureHalls.routes")(app);
 require("./app/routes/users.routes")(app);
 require("./app/routes/labs.routes")(app);
 require("./app/routes/devices.routes")(app);
+require("./app/routes/professors.routes")(app);
+require("./app/routes/subjects.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

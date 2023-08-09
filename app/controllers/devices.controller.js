@@ -19,7 +19,6 @@ exports.create = (req, res) => {
     SerialNumber: req.body.SerialNumber,
     Condition: req.body.Condition,
     LabID: req.body.LabID,
-
   };
   console.log(device);
 
@@ -30,7 +29,8 @@ exports.create = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the User.",
+        message:
+          err.message || "Some error occurred while creating the device.",
       });
     });
 };
@@ -84,7 +84,7 @@ exports.update = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "User was updated successfully.",
+          message: "device was updated successfully.",
         });
       } else {
         res.send({
@@ -109,17 +109,17 @@ exports.delete = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "User was deleted successfully!",
+          message: "device was deleted successfully!",
         });
       } else {
         res.send({
-          message: `Cannot delete User with id=${DeviceID}. User was not found!`,
+          message: `Cannot delete device with id=${DeviceID}. device was not found!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Could not delete User with id=" + DeviceID,
+        message: "Could not delete device with id=" + DeviceID,
       });
     });
 };
@@ -140,18 +140,3 @@ exports.deleteAll = (req, res) => {
       });
     });
 };
-
-// // find all published Tutorial
-//// exports.findAllPublished = (req, res) => {
-////   Tutorial.findAll({ where: { published: true } })
-////     .then((data) => {
-////       res.send(data);
-////     })
-////     .catch((err) => {
-////       res.status(500).send({
-////         message:
-////           err.message || "Some error occurred while retrieving tutorials.",
-////       });
-////     });
-//// };
-//

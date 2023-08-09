@@ -27,5 +27,7 @@ db.Labs = require("./labs.model.js")(sequelize, Sequelize);
 db.Devices = require("./devices.model.js")(sequelize, Sequelize);
 db.Devices.belongsTo(db.Labs, { foreignKey: 'LabID' });
 db.Labs.hasMany(db.Devices, { foreignKey: 'LabID' });
+db.Professors = require("./professors.model.js")(sequelize, Sequelize);
+db.Subjects = require("./subjects.model.js")(sequelize, Sequelize);
 
 module.exports = db;
