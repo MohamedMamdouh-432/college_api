@@ -21,5 +21,11 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
+db.LectureHalls = require("./lectureHalls.model.js")(sequelize, Sequelize);
+db.Users = require("./users.model.js")(sequelize, Sequelize);
+db.Labs = require("./labs.model.js")(sequelize, Sequelize);
+db.Devices = require("./devices.model.js")(sequelize, Sequelize);
+db.Devices.belongsTo(db.Labs, { foreignKey: 'LabID' });
+db.Labs.hasMany(db.Devices, { foreignKey: 'LabID' });
 
 module.exports = db;
