@@ -37,6 +37,7 @@ exports.create = (req, res) => {
 
 // Retrieve all LectureHalls from the database.
 exports.findAll = (req, res) => {
+  console.log(req.body);
   const UserName = req.query.UserName;
   var condition = UserName
     ? { UserName: { [Op.like]: `%${UserName}%` } }
@@ -103,7 +104,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const UserID = req.params.UserID;
 
-  LectureHalls.destroy({
+  Users.destroy({
     where: { UserID: UserID },
   })
     .then((num) => {
@@ -135,9 +136,56 @@ exports.deleteAll = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message ||
-          "Some error occurred while removing all users.",
+        message: err.message || "Some error occurred while removing all users.",
+      });
+    });
+};
+
+exports.login = (req, res) => {
+  console.log(req.body);
+  const { UserName, Email, Password } = req.body;
+  console.log("body: " + req.body.UserName);
+
+  if (Email == null && UserName == null) {
+    res.status(400).send({
+      message: "Email or Username can not be empty!",
+    });
+    return;
+  }
+  if (Password == null) {
+    res.status(400).send({
+      message: "Password can not be empty!",
+    });
+    return;
+  }
+  let condition = null;
+  if (Email != null) {
+    condition = {
+      Email: Email,
+
+      Password: Password,
+    };
+  } else {
+    condition = {
+      UserName: UserName,
+      Password: Password,
+    };
+  }
+
+  console.log(condition);
+  Users.findAll({ where: condition })
+    .then((data) => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find user.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving user",
       });
     });
 };
