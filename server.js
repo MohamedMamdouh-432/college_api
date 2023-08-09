@@ -43,6 +43,7 @@ require("./app/routes/labs.routes")(app);
 require("./app/routes/devices.routes")(app);
 require("./app/routes/professors.routes")(app);
 require("./app/routes/subjects.routes")(app);
+require("./app/routes/groups.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

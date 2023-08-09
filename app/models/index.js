@@ -10,10 +10,9 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     max: dbConfig.pool.max,
     min: dbConfig.pool.min,
     acquire: dbConfig.pool.acquire,
-    idle: dbConfig.pool.idle
-  }
+    idle: dbConfig.pool.idle,
+  },
 });
-
 
 const db = {};
 
@@ -25,9 +24,10 @@ db.LectureHalls = require("./lectureHalls.model.js")(sequelize, Sequelize);
 db.Users = require("./users.model.js")(sequelize, Sequelize);
 db.Labs = require("./labs.model.js")(sequelize, Sequelize);
 db.Devices = require("./devices.model.js")(sequelize, Sequelize);
-db.Devices.belongsTo(db.Labs, { foreignKey: 'LabID' });
-db.Labs.hasMany(db.Devices, { foreignKey: 'LabID' });
+db.Devices.belongsTo(db.Labs, { foreignKey: "LabID" });
+db.Labs.hasMany(db.Devices, { foreignKey: "LabID" });
 db.Professors = require("./professors.model.js")(sequelize, Sequelize);
 db.Subjects = require("./subjects.model.js")(sequelize, Sequelize);
+db.Groups = require("./groups.model.js")(sequelize, Sequelize);
 
 module.exports = db;
